@@ -20,6 +20,15 @@ class ViewController: UIViewController {
     @IBAction func keyPressed(_ sender: UIButton) {
         guard let buttonText = sender.titleLabel?.text else { return }
         playSound(soundURL: buttonText)
+        applyOpacityEffect(button: sender)
+    }
+    
+    func applyOpacityEffect(button: UIButton) {
+        button.layer.opacity = 0.8
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            button.layer.opacity = 1
+        }
     }
     
     func playSound(soundURL: String) {
